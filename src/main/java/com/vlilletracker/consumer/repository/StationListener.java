@@ -15,9 +15,9 @@ public class StationListener {
     @Autowired
     private StationService stationService;
 
-    public void onMessage(String message) {
-
+    public void onStationMessage(String message) {
         ObjectMapper objectMapper = new ObjectMapper();
+
         try {
             Station station = objectMapper.readValue(message, Station.class);
             stationService.handleStationUpdate(station);

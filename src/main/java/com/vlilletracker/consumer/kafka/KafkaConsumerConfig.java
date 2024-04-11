@@ -59,9 +59,9 @@ public class KafkaConsumerConfig {
      * @param message Kafka message to consume
      */
     @KafkaListener(topics = "vlille", groupId = "vlilleGroup")
-    public void listenGroupFoo(String message) {
+    public void listenVlilleGroup(String message) {
         log.debug("Received Message in group vlilleGroup: {}", message);
-        this.stationListener.onMessage(message);
+        this.stationListener.onStationMessage(message);
     }
 
 }

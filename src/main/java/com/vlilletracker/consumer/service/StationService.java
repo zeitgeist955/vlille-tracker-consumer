@@ -14,7 +14,7 @@ public class StationService {
     private final HashSet<Station> stationHashSet = new HashSet<>();
 
     public void handleStationUpdate(Station newStationInfo) {
-        log.debug("Libellé/number : {} / nom : {}", newStationInfo.getLibelle(), newStationInfo.getNom());
+        log.debug("Station update received - Libellé/number : {} / nom : {}", newStationInfo.getLibelle(), newStationInfo.getNom());
         Optional<Station> existingStation = this.findStationInHashSet(newStationInfo);
 
         if (existingStation.isPresent()) {
@@ -45,9 +45,9 @@ public class StationService {
         int minusOne = -1;
         log.debug("variation nb velos : {}", variationNbVelos);
         if (variationNbVelos > 0) {
-            log.info("{} vélos déposés à la station n°{} {}, nb de places restantes : {}", variationNbVelos, newStationInfo.getLibelle(), newStationInfo.getNom(), newStationInfo.getNbplacesdispo());
+            log.info("{} vélos déposé(s) à la station n°{} {}, nb de places restantes : {}", variationNbVelos, newStationInfo.getLibelle(), newStationInfo.getNom(), newStationInfo.getNbplacesdispo());
         } else if (variationNbVelos < 0) {
-            log.info("{} vélos retiré à la station n°{} {}, nb de vélos restants : {}", variationNbVelos*minusOne, newStationInfo.getLibelle(), newStationInfo.getNom(), newStationInfo.getNbvelosdispo());
+            log.info("{} vélos retiré(s) à la station n°{} {}, nb de vélos restants : {}", variationNbVelos*minusOne, newStationInfo.getLibelle(), newStationInfo.getNom(), newStationInfo.getNbvelosdispo());
         } else { //FIXME cannot be reach as is but should be
             log.error("Aucun changement du nb de vélos détecté mais update, ancienne info : {} - nvx infos : {}", oldStationInfo, newStationInfo);
         }
