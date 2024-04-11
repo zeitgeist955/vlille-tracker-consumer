@@ -32,4 +32,9 @@ public class Station {
 
     //TODO date ?
     private String datemiseajour;
+
+    public boolean areStationsTheSame(Station station) {
+        return this.libelle == station.getLibelle()
+                && this.nom.equals(station.getNom());
+    }
 }

@@ -1,8 +1,5 @@
 package com.vlilletracker.consumer.kafka;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vlilletracker.consumer.model.Station;
 import com.vlilletracker.consumer.repository.StationListener;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -63,7 +60,7 @@ public class KafkaConsumerConfig {
      */
     @KafkaListener(topics = "vlille", groupId = "vlilleGroup")
     public void listenGroupFoo(String message) {
-        log.info("Received Message in group vlilleGroup: {}", message);
+        log.debug("Received Message in group vlilleGroup: {}", message);
         this.stationListener.onMessage(message);
     }
 
